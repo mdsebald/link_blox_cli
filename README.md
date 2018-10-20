@@ -6,6 +6,7 @@
 
 Prerequisites:  Erlang 20 and Elixir 1.7 installed
 
+Open a command prompt
 
 ```sh
 ...$ git clone https://github.com/mdsebald/link_blox_cli.git 
@@ -67,11 +68,9 @@ i2c_mcp9808      temp_sens        71.0375                        normal       ti
 float_to_7seg    conv             "71.04"                        normal       input_cos
 i2c_ht16k33      display          0                              normal       input_cos
 
-LinkBlox@nerves-84f0>
+LinkBlox@nerves-ffff>
 ```
 
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/link_blox_cli](https://hexdocs.pm/link_blox_cli).
+NOTE: These instructions do not cover everything. To SSH into the CLI, requires setting up an SSH RSA encryption key pair.  The link_blox application itself (not the CLI) needs to be built and run on either on host or nerves compatible target hardware.  The IP address and host names of the devices running the app, need to be listed in the hosts file.
+  
 
