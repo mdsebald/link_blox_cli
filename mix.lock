@@ -1,0 +1,5 @@
+%{
+  "dialyxir": {:hex, :dialyxir, "0.5.1", "b331b091720fd93e878137add264bac4f644e1ddae07a70bf7062c7862c4b952", [:mix], [], "hexpm"},
+  "eunit_formatters": {:hex, :eunit_formatters, "0.3.1", "7a6fc351eb5b873e2356b8852eb751e20c13a72fbca03393cf682b8483509573", [:rebar3], [], "hexpm"},
+  "mix_eunit": {:git, "https://github.com/dantswain/mix_eunit.git", "2de69eb7c17807c146f997cf416f3161f4c4b0e6", []},
+}
