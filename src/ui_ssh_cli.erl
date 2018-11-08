@@ -57,7 +57,7 @@ start(SshPort, LangMod, SystemDir) ->
 %%
 start_shell(User, Host, LangMod) ->
   spawn(fun() ->
-	  io:setopts([{expand_fun, fun(Bef) -> expand(Bef) end}]),
+      io:setopts([{expand_fun, fun(Bef) -> expand(Bef, LangMod) end}]),
       user(User),
       host(Host),
       lang_mod(LangMod),
@@ -65,7 +65,6 @@ start_shell(User, Host, LangMod) ->
       lb_utils:set_lang_mod(LangMod),
       format_out(welcome_str),
       format_out(enter_command_str),
-      
       % default current node to none
       curr_node(none),
 	  shell_loop()
@@ -188,11 +187,13 @@ cmd_atom_map() ->
 %% List... is a list that will be printed
 %% Beep on prefixes that don't match and when the command filled in
 %%
-expand([$  | _]) ->
+expand([$  | _], _LangMod) ->
   {no, "", []};
-expand(RevBefore) ->
+expand(RevBefore, LangMod) ->
   Before = lists:reverse(RevBefore),
-  case longest_prefix(ui_cmd_str_list(), Before) of
+  % TODO: Insert context sensitive list of allowed strings here.
+  %   Currently just have list of command strings, need to add lists of block types block names, attributes, etc.
+  case longest_prefix(ui_cmd_str_list(LangMod), Before) of
     {prefix, P, [_]} -> {yes, P ++ " ", []};
     {prefix, "", M}  -> {yes, "", M};
     {prefix, P, _M}  -> {yes, P, []};
@@ -203,13 +204,11 @@ expand(RevBefore) ->
 %%
 %% Return a list of all possible command strings, 
 %% Used for TAB expansion
-%% Each command is a 4-tuple, just need the first element from each, The command string
+%% Each command is a 4-tuple, just need the first element from each (i.e. the command string)
 %%
--spec ui_cmd_str_list() -> [string()].
+-spec ui_cmd_str_list(LangMod :: module()) -> [string()].
 
-ui_cmd_str_list() ->
-  %[Cmd || {Cmd, _, _, _} <- lb_utils:get_ui_cmds()].
-  LangMod = lang_mod(),
+ui_cmd_str_list(LangMod) ->
   [Cmd || {Cmd, _, _, _} <- LangMod:ui_cmds()].
 
 
