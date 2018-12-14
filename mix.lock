@@ -1,5 +1,7 @@
 %{
+  "artificery": {:hex, :artificery, "0.2.6", "f602909757263f7897130cbd006b0e40514a541b148d366ad65b89236b93497a", [:mix], [], "hexpm"},
   "dialyxir": {:hex, :dialyxir, "0.5.1", "b331b091720fd93e878137add264bac4f644e1ddae07a70bf7062c7862c4b952", [:mix], [], "hexpm"},
+  "distillery": {:hex, :distillery, "2.0.12", "6e78fe042df82610ac3fa50bd7d2d8190ad287d120d3cd1682d83a44e8b34dfb", [:mix], [{:artificery, "~> 0.2", [hex: :artificery, repo: "hexpm", optional: false]}], "hexpm"},
   "eunit_formatters": {:hex, :eunit_formatters, "0.3.1", "7a6fc351eb5b873e2356b8852eb751e20c13a72fbca03393cf682b8483509573", [:rebar3], [], "hexpm"},
   "link_blox_cmn": {:git, "https://github.com/mdsebald/link_blox_cmn.git", "e61e7231661d6a2daf20b4d20fde79f31ba83b6e", []},
   "mix_eunit": {:git, "https://github.com/dantswain/mix_eunit.git", "2de69eb7c17807c146f997cf416f3161f4c4b0e6", []},
