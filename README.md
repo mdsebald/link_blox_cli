@@ -2,6 +2,8 @@
 
 ## Stand alone command line user interface for the link_blox IoT application
 
+[![CircleCI](https://circleci.com/gh/mdsebald/link_blox_cli.svg?style=svg)](https://circleci.com/gh/mdsebald/link_blox_cli)
+
 #### To Use:
 
 Prerequisites:  Erlang 20 and Elixir 1.7 installed
